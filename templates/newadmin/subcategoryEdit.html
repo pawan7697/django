@@ -1,0 +1,56 @@
+{% extends "newadmin/header.html" %}
+{% load static %}
+{% block title %} {% endblock %}
+{% block body %} 
+  <section id="container">
+
+    <!--main content start-->
+    <section id="main-content">
+      <section class="wrapper">
+        <h3><i class="fa fa-angle-right"></i> Edit Sub Categeory</h3>
+        <!-- BASIC FORM ELELEMNTS -->
+        <div class="row mt">
+          <div class="col-lg-12">
+            <div class="form-panel">
+              <h4 class="mb"><i class="fa fa-angle-r.category_nameight"></i> Form Elements</h4>
+              <form class="form-horizontal style-form" action="/subcategoryUpadte/" method="POST">
+                {% csrf_token %}
+                 {% for subcat in all_data %}
+                    <div class="form-group">
+                   <label class="col-sm-2 col-sm-2 control-label">Category</label>
+                   <div class="col-sm-10">
+                <select class="form-control" name="categoryID">
+                  <option value="">Select</option>
+                  {% for cat in categorys %}
+                 
+                  <option value="{{ cat.id }}"  {% if subcat.category_name_id == cat.id %} {{ 'selected' }} {% else %} {% endif %}> {{ cat.category_name }}</option>
+                  {% endfor %}
+                
+                </select>
+              </div></div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Default</label>
+                  <div class="col-sm-10">
+                
+                    <input type="text" class="form-control"  value="{{ subcat.subcategory_name }}"  name="subcategoryname"> 
+                    <input type="hidden" class="form-control"  value="{{ idss }}"  name="idss"> 
+                  
+                  </div>
+                </div>
+            {% endfor %}
+       <button type="submit" class="btn btn-theme">Submit</button>
+              </form>
+            </div>
+          </div>
+          <!-- col-lg-12-->
+        </div>
+        <!-- /row -->
+      </section>
+      </section>
+       </section>
+
+{% endblock %}
+
+</body>
+
+</html>

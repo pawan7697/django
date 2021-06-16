@@ -1,0 +1,87 @@
+{% extends "newadmin/header.html" %}
+{% load static %}
+{% block title %} {% endblock %}
+{% block body %} 
+  <section id="container">
+
+    <!--main content start-->
+    <section id="main-content">
+      <section class="wrapper">
+        <h3><i class="fa fa-angle-right"></i> Form Components</h3>
+        <!-- BASIC FORM ELELEMNTS -->
+        <div class="row mt">
+          <div class="col-lg-12">
+            <div class="form-panel">
+              <h4 class="mb"><i class="fa fa-angle-r.category_nameight"></i> Form Elements</h4>
+              <form class="form-horizontal style-form" action="/SupercategorySubmit/" method="POST">
+                {% csrf_token %}
+                    <div class="form-group">
+                   <label class="col-sm-2 col-sm-2 control-label">Category</label>
+                   <div class="col-sm-10">
+                <select class="form-control" name="category_id" id="category_id">
+                  <option value="">Select</option>
+                  {% for catin in catData %}
+                  <option value="{{ catin.id }}">{{ catin.category_name }}</option>
+                  {% endfor %}
+                
+                </select>
+              </div></div>
+                   <div class="form-group">
+                   <label class="col-sm-2 col-sm-2 control-label">subCategory</label>
+                   <div class="col-sm-10">
+                <select class="form-control" name="subcategory_id" id="subcat">
+                  <option value="">Select</option>
+                
+                </select>
+              </div></div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Default</label>
+                  <div class="col-sm-10">
+                
+                    <input type="text" class="form-control"  value=""  name="Super"> 
+                  
+                  </div>
+                </div>
+            
+       <button type="submit" class="btn btn-theme">Submit</button>
+              </form>
+            </div>
+          </div>
+          <!-- col-lg-12-->
+        </div>
+        <!-- /row -->
+      </section>
+      </section>
+       </section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('#category_id').on('change', function(){
+        var categoryID = $(this).val();
+        var token = $('input[name=csrfmiddlewaretoken]').val();
+        
+             if(categoryID){
+            $.ajax({
+                type:'POST',
+                url:'/ajaxsubcategory/',
+                data: { categoryID :categoryID, csrfmiddlewaretoken: token },
+                success:function(html){
+                //  alert();
+                     $('#subcat').html(html);
+                }
+            }); 
+        }else{
+           alert();
+        }
+  
+    });
+
+});
+</script>
+
+{% endblock %}
+
+
+</body>
+
+</html>

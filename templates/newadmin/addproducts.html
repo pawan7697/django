@@ -1,0 +1,161 @@
+{% extends "newadmin/header.html" %}
+{% load static %}
+{% block title %} {% endblock %}
+{% block body %} 
+  <section id="container">
+
+    <!--main content start-->
+    <section id="main-content">
+      <section class="wrapper">
+        <h3><i class="fa fa-angle-right"></i> Form Components</h3>
+        <!-- BASIC FORM ELELEMNTS -->
+        <div class="row mt">
+          <div class="col-lg-12">
+            <div class="form-panel">
+              <h4 class="mb"><i class="fa fa-angle-r.category_nameight"></i> Form Elements</h4>
+              <form class="form-horizontal style-form" enctype="multipart/form-data" action="/productSubmit/" method="POST">
+                {% csrf_token %}
+                    <div class="form-group">
+                   <label class="col-sm-2 col-sm-2 control-label">Category</label>
+                   <div class="col-sm-10">
+                    {% for vcat in cat %}
+                    <label class="checkbox-inline">
+                <input type="checkbox" id="inlineCheckbox2" name="cat[]" value="{{ vcat.id }}"> {{ vcat.category_name }}
+                </label>
+                 {% endfor %}
+                
+              </div></div>
+                   <div class="form-group">
+                   <label class="col-sm-2 col-sm-2 control-label">subCategory</label>
+                   <div class="col-sm-10">
+                  {% for vsubcat in subcat %}
+                    <label class="checkbox-inline">
+                <input type="checkbox" id="inlineCheckbox2" name="subcats[]" value="{{ vsubcat.id }}"> {{ vsubcat.subcategory_name }}
+                </label>
+                 {% endfor %}
+              </div></div>
+                  <div class="form-group">
+                   <label class="col-sm-2 col-sm-2 control-label">super Category</label>
+                   <div class="col-sm-10">
+                  {% for vsupers in supers %}
+                    <label class="checkbox-inline">
+                <input type="checkbox" id="inlineCheckbox2" name="supercat[]" value="{{ vsupers.id }}"> {{ vsupers.supercategory_name }}
+                </label>
+                 {% endfor %}
+              </div></div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Product Name</label>
+                  <div class="col-sm-10">
+                
+                    <input type="text" class="form-control"  value=""  name="pname"> 
+                  
+                  </div>
+                </div>
+                   <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Product Price</label>
+                  <div class="col-sm-10">
+                
+                    <input type="text" class="form-control"  value=""  name="pprice"> 
+                  
+                  </div>
+                </div>
+                  <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Product Sell Price</label>
+                  <div class="col-sm-10">
+                
+                    <input type="text" class="form-control"  value=""  name="sellprice"> 
+                  
+                  </div>
+                </div>
+                      <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Product Sell Price</label>
+                  <div class="col-sm-10">
+                
+                  <textarea class="form-control" name="desc" id="contact-message" placeholder="Your Message" rows="5" data-rule="required" data-msg="Please write something for us"></textarea>
+                  
+                  </div>
+                </div>
+               <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Product Thumb Img</label>
+                  <div class="col-sm-10">
+                
+                  <div class="fileupload fileupload-new" data-provides="fileupload">
+                      <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="">
+                      </div>
+                      <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                      <div>
+                        <span class="btn btn-theme02 btn-file">
+                          <span class="fileupload-new"><i class="fa fa-paperclip"></i> Select image</span>
+                        <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                        <input type="file" class="default" name="simg">
+                        </span>
+                        <a href="advanced_form_components.html#" class="btn btn-theme04 fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash-o"></i> Remove</a>
+                      </div>
+                    </div>
+                  
+                  </div>
+                </div>
+                      <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Product details Img</label>
+                  <div class="col-sm-10">
+                
+                  <div class="fileupload fileupload-new" data-provides="fileupload">
+                      <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="">
+                      </div>
+                      <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                      <div>
+                        <span class="btn btn-theme02 btn-file">
+                          <span class="fileupload-new"><i class="fa fa-paperclip"></i> Select image</span>
+                        <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                        <input type="file" class="default" name="Dimg">
+                        </span>
+                        <a href="advanced_form_components.html#" class="btn btn-theme04 fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash-o"></i> Remove</a>
+                      </div>
+                    </div>
+                  
+                  </div>
+                </div>
+       <button type="submit" class="btn btn-theme">Submit</button>
+              </form>
+            </div>
+          </div>
+          <!-- col-lg-12-->
+        </div>
+        <!-- /row -->
+      </section>
+      </section>
+       </section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('#category_id').on('change', function(){
+        var categoryID = $(this).val();
+        var token = $('input[name=csrfmiddlewaretoken]').val();
+        
+             if(categoryID){
+            $.ajax({
+                type:'POST',
+                url:'/ajaxsubcategory/',
+                data: { categoryID :categoryID, csrfmiddlewaretoken: token },
+                success:function(html){
+                //  alert();
+                     $('#subcat').html(html);
+                }
+            }); 
+        }else{
+           alert();
+        }
+  
+    });
+
+});
+</script>
+
+{% endblock %}
+
+
+</body>
+
+</html>

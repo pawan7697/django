@@ -1,0 +1,52 @@
+{% extends "newadmin/header.html" %}
+{% load static %}
+{% block title %} {% endblock %}
+{% block body %} 
+     <section id="main-content">
+      <section class="wrapper">
+        <h3><i class="fa fa-angle-right"></i> Sub Category List <a href="/addSubcategory/">(Add)</a></h3>
+        <div class="row mb">
+          <!-- page start-->
+          <div class="content-panel">
+            <div class="adv-table">
+              <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+                <thead>
+                  <tr>
+                    <th>Sub Category Name</th>
+                    <th> Category Name</th>
+                      <th>Action</th>
+                  
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                  {% if all_data %}
+                    {% for cat in all_data %}
+                  <tr class="gradeX">
+                    <td>{{ cat.subcategory_name }}</td>
+                    <td>{{ cat.category_name__category_name }}</td>
+                     <td><a href="/subcategoryEdit/{{ cat.id }}">edit</a></td>
+                    
+                   
+                  </tr>
+                  {% endfor %}
+               {% else %}
+        <P>No categories at present.</P>
+             {% endif %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- page end-->
+        </div>
+        <!-- /row -->
+      </section>
+      <!-- /wrapper -->
+    </section>
+
+{% endblock %}
+
+</body>
+
+</html>
